@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../../api/main/AuthenticationService.js'
 import axios from 'axios'
 export const TOKEN_KEY = 'auth-token'
 export const USER_KEY = 'auth-user'

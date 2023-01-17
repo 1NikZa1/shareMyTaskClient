@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../../api/main/AuthenticationService.js'
 import SearchBarComponent from './SearchBarComponent.jsx'
 import AccountProfileService from '../../api/main/AccountProfileService'
 import Logo from './assets/logo.png';

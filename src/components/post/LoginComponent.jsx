@@ -1,5 +1,5 @@
 import React from "react";
-import AuthenticationService from "./AuthenticationService";
+import AuthenticationService from "../../api/main/AuthenticationService";
 import {Login} from "../login/login";
 import {Register} from "../login/register";
 import {Alert} from "react-bootstrap";
