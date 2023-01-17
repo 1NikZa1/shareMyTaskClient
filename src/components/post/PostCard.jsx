@@ -8,6 +8,7 @@ import Avatar from './Avatar';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import AccountProfileService from "../../api/main/AccountProfileService";
+import {Link} from "react-router-dom";
 
 export default class PostCard extends Component {
     constructor(props) {
@@ -45,14 +46,13 @@ export default class PostCard extends Component {
     }
 
     handleComment = () => {
-        let comment = {
-            message: this.state.content,
-        }
+        let comment = {message: this.state.content}
 
-        PostDataService.postComment(this.props.post.id, comment)
-            .then(response => this.setState({comments: [...this.state.comments, response.data]})
-            );
-        this.setState({content: ''});
+        if (comment.message.trim().length > 0) {
+            PostDataService.postComment(this.props.post.id, comment)
+                .then(response => this.setState({comments: [...this.state.comments, response.data]}));
+            this.setState({content: ''});
+        }
     }
 
     deletePost = postId => {
@@ -72,7 +72,7 @@ export default class PostCard extends Component {
                     <div className="status-left">
                         <Avatar username={this.props.username}/>
                         <div style={{float: 'left'}}>
-                            <a href={'/profile/' + this.props.username}>{this.props.username}</a>
+                            <Link to={'/profile/' + this.props.username}>{this.props.username}</Link>
                             <div className="date">{moment(this.props.post.createdDate).fromNow()}</div>
                         </div>
                     </div>
@@ -95,7 +95,8 @@ export default class PostCard extends Component {
                     <div className="commentHolder" ref="comments">
                         {this.state.comments.map((comment) => <div className="comment" key={comment.id}><Avatar
                             username={comment.username}/>
-                            <div className="commenter"><a href={'/profile/' + comment.username}>{comment.username}</a>
+                            <div className="commenter"><Link
+                                to={'/profile/' + comment.username}>{comment.username}</Link>
                                 {comment.username === this.state.username && <div className="status-right-comment">
                                     <OverlayTrigger placement="bottom"
                                                     overlay={<Tooltip id={"tooltip-bottom"}>Delete this
@@ -110,7 +111,7 @@ export default class PostCard extends Component {
                     </div>
                     <div className="comment-control form-row">
                         <input type="text" className="col-md-9 col-sm-9 col-xs-9" onChange={this.handleChange}
-                               value={this.state.content} placeholder="Write a comment.."  onKeyDown={event => {
+                               value={this.state.content} placeholder="Write a comment.." onKeyDown={event => {
                             if (event.key === 'Enter') {
                                 this.handleComment();
                             }
