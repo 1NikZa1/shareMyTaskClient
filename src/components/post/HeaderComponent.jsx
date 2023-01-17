@@ -36,23 +36,18 @@ class HeaderComponent extends React.Component {
                 {isUserLoggedIn && <header>
                     <Navbar expand={"md"} className="navbar navbar-expand-md navbar-dark bg-dark">
                         <OverlayTrigger placement="bottom"
-                                        overlay={<Tooltip id="tooltip-bottom">Back to home</Tooltip>}><Link
-                            className="nav-link" to="/welcome/"><img src={Logo} alt="Logo" className="rmitLogo"/></Link>
+                                        overlay={<Tooltip id="tooltip-bottom">Back to home</Tooltip>}><Link to="/welcome"><img src={Logo} alt="Logo" className="logo"/></Link>
                         </OverlayTrigger>
-                        <ul className="navbar-nav d-md-block d-none" style={{marginRight: "1.1rem"}}>
-                            <Link className="nav-link" to="/welcome/">Home</Link>
-                        </ul>
-
                         <SearchBarComponent/>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
                         <Navbar.Collapse id="basic-navbar-nav">
                             <ul className="navbar-nav navbar-collapse justify-content-end">
                                 <OverlayTrigger key="bottom" placement="bottom"
-                                                overlay={<Tooltip id='tooltip-bottom'> Visit your profile </Tooltip>}>
-                                    <li className={"toProfile"}><Avatar username={this.state.username}/><a
-                                        className="nav-link"
-                                        href={'/profile/' + this.state.username}>{this.state.username}</a></li>
+                                                overlay={<Tooltip id='tooltip-bottom'>Visit your profile</Tooltip>}>
+                                    <li className={"toProfile"}><Avatar username={this.state.username}/>
+                                        <Link className="nav-link" to={'/profile/' + this.state.username}>{this.state.username}</Link>
+                                        </li>
                                 </OverlayTrigger>
                                 <Link className="nav-link d-md-none" to="/welcome">Home</Link>
                                 <li><Link className="nav-link" name="logout" to="/logout"

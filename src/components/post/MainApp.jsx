@@ -21,7 +21,6 @@ class MainApp extends Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        // this.refreshInfo();
         this.redirect();
     }
 
@@ -43,7 +42,7 @@ class MainApp extends Component {
                         <Switch>
                             <Route path="/" exact component={LoginComponent} />
                             <Route path="/login" component={LoginComponent} />
-                            <AuthenticatedRoute path="/welcome/" component={WelcomeComponent} />
+                            <AuthenticatedRoute path="/welcome" component={WelcomeComponent} />
                             <AuthenticatedRoute path="/profile/:username" component={AccountProfile} />
                             <AuthenticatedRoute path="/logout" component={LoginComponent} />
                             <Route component={ErrorComponent} />

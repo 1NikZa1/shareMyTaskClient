@@ -2,6 +2,7 @@ import React from 'react'
 import "./search.scss"
 import AccountProfileService from "../../api/main/AccountProfileService"
 import 'simplebar/dist/simplebar.css';
+import {Link} from "react-router-dom";
 class SearchBarComponent extends React.Component {
 
     constructor(props) {
@@ -55,7 +56,7 @@ class SearchBarComponent extends React.Component {
                 <input className="searchBar" onFocus={this.onFocus} onBlur={this.onBlur} type="input" placeholder="Search.." onChange={this.handleChange}/>
                 {this.state.display ? 
                 <div className="resultBox" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-                    {this.state.filList.map((each) => <a href={"/profile/" + each.username} key={each.id}><div className="userSearch">{each.username}</div></a>)}
+                    {this.state.filList.map((each) =><Link to={"/profile/" + each.username} key={each.username}><div className="userSearch">{each.username}</div></Link>)}
                 </div> : null }
             </div>
     }
