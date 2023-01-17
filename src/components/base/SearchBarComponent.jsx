@@ -1,5 +1,5 @@
 import React from 'react'
-import "./search.scss"
+import "../post/search.scss"
 import AccountProfileService from "../../api/main/AccountProfileService"
 import 'simplebar/dist/simplebar.css';
 import {Link} from "react-router-dom";

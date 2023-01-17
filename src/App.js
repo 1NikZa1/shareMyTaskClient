@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import MainApp from "./components/post/MainApp";
+import MainApp from "./components/base/MainApp";
 import './App.css';
 import './bootstrap.css';
 

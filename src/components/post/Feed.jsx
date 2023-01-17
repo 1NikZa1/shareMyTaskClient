@@ -5,7 +5,7 @@ import PostCard from './PostCard'
 import PostComponent from './PostComponent';
 import AccountProfileService from "../../api/main/AccountProfileService";
 
-class WelcomeComponent extends Component {
+class Feed extends Component {
 
     constructor(props) {
         super(props)
@@ -44,4 +44,4 @@ class WelcomeComponent extends Component {
     }
 }
 
-export default WelcomeComponent
+export default Feed

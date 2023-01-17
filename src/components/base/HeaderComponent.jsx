@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import AuthenticationService from '../../api/main/AuthenticationService.js'
 import SearchBarComponent from './SearchBarComponent.jsx'
 import AccountProfileService from '../../api/main/AccountProfileService'
-import Logo from './assets/logo.png';
+import Logo from '../post/assets/logo.png';
 import Navbar from 'react-bootstrap/Navbar';
-import Avatar from './Avatar';
+import Avatar from '../post/Avatar';
 import {Tooltip, OverlayTrigger} from "react-bootstrap";
 
 class HeaderComponent extends React.Component {
@@ -36,7 +36,7 @@ class HeaderComponent extends React.Component {
                 {isUserLoggedIn && <header>
                     <Navbar expand={"md"} className="navbar navbar-expand-md navbar-dark bg-dark">
                         <OverlayTrigger placement="bottom"
-                                        overlay={<Tooltip id="tooltip-bottom">Back to home</Tooltip>}><Link to="/welcome"><img src={Logo} alt="Logo" className="logo"/></Link>
+                                        overlay={<Tooltip id="tooltip-bottom">Back to home</Tooltip>}><Link to="/feed"><img src={Logo} alt="Logo" className="logo"/></Link>
                         </OverlayTrigger>
                         <SearchBarComponent/>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -49,7 +49,7 @@ class HeaderComponent extends React.Component {
                                         <Link className="nav-link" to={'/profile/' + this.state.username}>{this.state.username}</Link>
                                         </li>
                                 </OverlayTrigger>
-                                <Link className="nav-link d-md-none" to="/welcome">Home</Link>
+                                <Link className="nav-link d-md-none" to="/feed">Home</Link>
                                 <li><Link className="nav-link" name="logout" to="/logout"
                                           onClick={AuthenticationService.logout}>Logout</Link></li>
                             </ul>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AuthenticatedRoute from './AuthenticatedRoute.jsx'
-import LoginComponent from './LoginComponent.jsx'
-import ErrorComponent from './ErrorComponent.jsx'
+import LoginComponent from '../login/LoginComponent.jsx'
+import ErrorComponent from '../post/ErrorComponent.jsx'
 import HeaderComponent from './HeaderComponent.jsx'
-import WelcomeComponent from './WelcomeComponent.jsx'
+import Feed from '../post/Feed.jsx'
 import AccountProfile from '../profilewall/AccountProfile.jsx'
 
 class MainApp extends Component {
@@ -42,7 +42,7 @@ class MainApp extends Component {
                         <Switch>
                             <Route path="/" exact component={LoginComponent} />
                             <Route path="/login" component={LoginComponent} />
-                            <AuthenticatedRoute path="/welcome" component={WelcomeComponent} />
+                            <AuthenticatedRoute path="/feed" component={Feed} />
                             <AuthenticatedRoute path="/profile/:username" component={AccountProfile} />
                             <AuthenticatedRoute path="/logout" component={LoginComponent} />
                             <Route component={ErrorComponent} />

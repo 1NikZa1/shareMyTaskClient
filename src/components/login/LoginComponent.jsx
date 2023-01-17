@@ -1,7 +1,7 @@
 import React from "react";
 import AuthenticationService from "../../api/main/AuthenticationService";
-import {Login} from "../login/login";
-import {Register} from "../login/register";
+import {Login} from "./login";
+import {Register} from "./register";
 import {Alert} from "react-bootstrap";
 
 class LoginComponent extends React.Component {
@@ -28,7 +28,7 @@ class LoginComponent extends React.Component {
 
     componentDidMount() {
         if (AuthenticationService.isUserLoggedIn()) {
-            window.location.replace('/welcome')
+            window.location.replace('/feed')
         }
     }
 
@@ -68,7 +68,7 @@ class LoginComponent extends React.Component {
         ).then(response => {
             AuthenticationService.saveToken(response.data.token);
             AuthenticationService.saveUser(response.data);
-            window.location.replace('/welcome')
+            window.location.replace('/feed')
         }).catch(() => {
             this.setState({showSuccessMessage: false});
             this.setState({hasLoginFailed: true});
