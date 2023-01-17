@@ -28,7 +28,7 @@ class ListPostsComponent extends React.Component {
                         <div>
                             {
                                 this.state.posts.map(
-                                    (post,i) =>
+                                    (post) =>
                                        <PostCard key={post.id} post={post} refreshFeed={this.refreshFeed} username={this.props.username}/>
                                 )
                             }
