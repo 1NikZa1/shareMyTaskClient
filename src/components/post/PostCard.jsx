@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {ReactComponent as Close} from './assets/times.svg';
-import {ReactComponent as Edit} from './assets/edit.svg';
 import PostDataService from '../../api/main/PostDataService';
-import Editable from './Editable';
 import moment from 'moment';
 import Avatar from './Avatar';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -19,16 +17,6 @@ export default class PostCard extends Component {
             comments: [],
             content: ''
         }
-    }
-
-    toggleShow() {
-        this.setShow(!this.state.show);
-    }
-
-    setShow = (value) => {
-        this.setState({
-            show: value
-        })
     }
 
     componentDidMount() {
@@ -77,18 +65,12 @@ export default class PostCard extends Component {
                     </div>
                     {isPostCreator ? <div className="status-right">
                         <OverlayTrigger placement="bottom"
-                                        overlay={<Tooltip id={"tooltip-bottom"}>Edit this post</Tooltip>}><Edit
-                            onClick={this.toggleShow}/></OverlayTrigger>
-                        <OverlayTrigger placement="bottom"
                                         overlay={<Tooltip id={"tooltip-bottom"}>Delete this post</Tooltip>}><Close
                             name="deletePost" onClick={() => this.deletePost(this.props.post.id)}/></OverlayTrigger>
                     </div> : ""}
                 </div>
                 <div className="status-content">
-                    {!this.state.show && this.props.post.caption}
-                    {this.state.show &&
-                        <Editable post={this.props.post} toggleShow={this.toggleShow} username={this.props.username}
-                                  refreshFeed={this.props.refreshFeed} content={this.props.post.description}/>}
+                    {this.props.post.caption}
                 </div>
                 <div className="comments">
                     <div className="commentHolder" ref="comments">
