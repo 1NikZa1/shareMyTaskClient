@@ -45,7 +45,7 @@ class HeaderComponent extends React.Component {
                             <ul className="navbar-nav navbar-collapse justify-content-end">
                                 <OverlayTrigger key="bottom" placement="bottom"
                                                 overlay={<Tooltip id='tooltip-bottom'>Visit your profile</Tooltip>}>
-                                    <li className={"toProfile"}><Avatar username={this.state.username}/>
+                                    <li className={"toProfile"}><Avatar key={this.state.username} username={this.state.username}/>
                                         <Link className="nav-link" to={'/profile/' + this.state.username}>{this.state.username}</Link>
                                         </li>
                                 </OverlayTrigger>
