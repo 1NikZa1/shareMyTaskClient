@@ -4,15 +4,17 @@ import PostComponent from '../post/PostComponent.jsx';
 import "./profile.scss";
 import AccountProfileService from "../../api/main/AccountProfileService";
 
-class NewsFeedComponent extends React.Component {
+class UserFeed extends React.Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
             username: '',
+            refreshFeedFlag: false,
         }
     }
+
 
     componentDidMount() {
         this.refreshInfo()
@@ -24,8 +26,8 @@ class NewsFeedComponent extends React.Component {
 
     }
 
-    refreshFeed() {
-
+    refreshFeed = () => {
+        this.setState({refreshFeedFlag: !this.state.refreshFeedFlag})
     }
 
     render() {
@@ -35,10 +37,10 @@ class NewsFeedComponent extends React.Component {
                     <div className="wrap">
                         <PostComponent refreshFeed={this.refreshFeed} username={this.props.username}/>
                     </div> : ""}
-                <ListPostsComponent username={this.props.username}/>
+                <ListPostsComponent key={this.state.refreshFeedFlag} username={this.props.username}/>
             </div>
         )
     }
 }
 
-export default NewsFeedComponent;
+export default UserFeed;
