@@ -14,7 +14,6 @@ export default class PostCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            target: this.props.username,
             username: '',
             show: false,
             comments: [],
@@ -101,7 +100,7 @@ export default class PostCard extends Component {
                                     <OverlayTrigger placement="bottom"
                                                     overlay={<Tooltip id={"tooltip-bottom"}>Delete this
                                                         comment</Tooltip>}><Close
-                                        name="deletePost"
+                                        name="deleteComment"
                                         onClick={() => this.deleteComment(comment.id)}/></OverlayTrigger></div>}
                                 <div style={{fontSize: '.8em', color: "lightgray"}}
                                      className="date">{moment(comment.createdDate).fromNow()}</div>
