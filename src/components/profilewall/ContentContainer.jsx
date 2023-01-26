@@ -1,6 +1,6 @@
 import React from 'react';
 import SideContentComponent from '../profilewall/SideContentComponent';
-import NewsFeedComponent from '../profilewall/NewsFeedComponent';
+import UserFeed from './UserFeed';
 import UpdateDetails from '../profilewall/UpdateDetails'
 import AccountProfileService from "../../api/main/AccountProfileService";
 
@@ -56,7 +56,7 @@ class ContentContainer extends React.Component {
                             aboutme={this.state.bio}
                             triggerEditState={this.triggerEditState}
                         />}
-                    <NewsFeedComponent username={this.props.username}/>
+                    <UserFeed username={this.props.username}/>
                 </div>
             </div>
 
