@@ -21,10 +21,12 @@ export default class Avatar extends Component {
     }
 
     refreshInfo() {
-        AccountProfileService.getImageForUser(this.props.username)
-            .then(response => {
-                this.setState({img: response.data.imageBytes})
-            })
+        if (this.props.username) {
+            AccountProfileService.getImageForUser(this.props.username)
+                .then(response => {
+                    this.setState({img: response.data.imageBytes})
+                })
+        }
     }
 
     render() {
